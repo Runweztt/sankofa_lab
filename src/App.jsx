@@ -6,6 +6,7 @@ import About from "./Page/About";
 import Elab from "./Page/Elab";
 import Sankofachatbot from "./Page/Sankofachatbot";
 import Footer from "./Components/Footer";
+import Contact from "./Page/Contact";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
           <Route path="/elab" element={<Elab />} />
         </Routes>
       </div>

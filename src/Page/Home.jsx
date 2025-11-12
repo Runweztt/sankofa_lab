@@ -1,8 +1,7 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Parallax } from "react-parallax";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import sankofateam from "../assets/sankofa_team.jpg";
 
 const Home = () => {
   const stats = [
@@ -56,34 +55,34 @@ const Home = () => {
 
   const team = [
     {
-      name: "Amina Yusuf",
-      role: "Program Director",
+      name: "Emmanuel Amarikwa",
+      role: "Project Lead & Strategy Coordinator",
       photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-      bio: "Leads strategy, operations, and partnerships across Nigeria.",
+   
     },
     {
-      name: "Ifeanyi Okoro",
-      role: "Lead Engineer",
+      name: "Magnificat Marie Augusta Umutesi",
+      role: "Research & Systems Design Lead",
       photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
-      bio: "Architect of our digital apprenticeship platform and innovation tools.",
+      
     },
     {
-      name: "Ngozi Chika",
-      role: "Finance & Impact Lead",
+      name: "Eminente Muhimpundu",
+      role: "Digital Learning & Innovation Lead",
       photo: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
-      bio: "Manages grants, partnerships and impact evaluation metrics.",
+      
     },
     {
-      name: "Tosin Ade",
-      role: "Mentorship Coordinator",
+      name: "Daniel Nakolah",
+      role: "Partnerships & Field Engagement Lead",
       photo: "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg",
-      bio: "Connects mentors and apprentices, ensuring guidance quality.",
+    
     },
     {
-      name: "Caleb O.",
-      role: "Media & Outreach",
+      name: "Ajang Biar",
+      role: "Technology & Operations Lead",
       photo: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg",
-      bio: "Drives storytelling, communications and brand visibility.",
+  
     },
   ];
 
@@ -124,30 +123,31 @@ const Home = () => {
 
   return (
     <div className="bg-[#f8faff] text-gray-800 font-inter">
-      <Navbar />
+    
 
-      {/* HERO (Parallax) */}
+      {/* HERO (Dynamic Parallax) */}
       <Parallax
         bgImage="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg"
-        strength={250}
-        bgImageAlt="Sankofa Hero Background"
+        strength={500}
+        blur={{ min: -2, max: 5 }}
       >
-        <section className="relative flex flex-col items-center text-center py-24 px-4 sm:px-6 md:px-16 lg:px-24 bg-blue-900/30 backdrop-blur-sm text-white">
+        <section className="relative flex flex-col items-center text-center py-28 px-6 md:px-16 lg:px-24 text-white">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-800/60 to-blue-900/80 z-0"></div>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-5xl"
+            className="max-w-5xl relative z-10"
           >
-            <h1 className="text-3xl mt-25 sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+            <h1 className="text-4xl mt-25 sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
               Empowering Job Creation Through{" "}
               <span className="text-blue-300">
                 Igbo Apprenticeship Innovation
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Sankofa_Lab is Nigeria’s digital think tank pioneering pathways
+            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+              Sankofa-Lab is a digital think tank pioneering pathways
               for youth employment through cultural apprenticeship and
               technology.
             </p>
@@ -195,24 +195,23 @@ const Home = () => {
       {/* JOURNEY */}
       <section
         id="journey"
-        className="py-20 px-4 sm:px-6 md:px-16 lg:px-24 bg-gradient-to-b from-blue-50 to-white text-center"
+        className="py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-blue-50 to-white text-center"
       >
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">
           Our E-Lab Journey
         </h2>
         <div className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {steps.map((step, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -4 }}
-              className="bg-white border border-blue-100 shadow-lg rounded-2xl p-6 sm:p-8 text-left"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white border border-blue-100 shadow-lg rounded-2xl p-8 text-left hover:shadow-xl transition-all"
             >
               <div className="text-blue-600 text-4xl font-extrabold mb-4">
                 {`0${i + 1}`}
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">
-                {step.title}
-              </h3>
+              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
               <p className="text-gray-600 text-sm">{step.desc}</p>
             </motion.div>
           ))}
@@ -222,23 +221,25 @@ const Home = () => {
       {/* PARALLAX VIDEOS */}
       <Parallax
         bgImage="https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg"
-        strength={300}
-        bgImageAlt="Video Section Background"
+        strength={400}
+        blur={{ min: -3, max: 6 }}
       >
         <section
           id="elab-videos"
-          className="py-24 px-4 sm:px-6 md:px-16 lg:px-24 bg-[#0b1022]/70 text-white backdrop-blur-md"
+          className="relative py-24 px-6 md:px-16 lg:px-24 text-white"
         >
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10">
-              Inside the e_Lab Experience
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1022]/80 via-[#0e1631]/70 to-[#11183d]/80 z-0"></div>
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-10">
+              Inside the E-Lab Experience
             </h2>
 
             <div className="grid gap-10 md:grid-cols-2 mb-12">
               {videos.map((v, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.25 }}
                   className="rounded-2xl overflow-hidden shadow-xl bg-[#0f1933]/80 border border-[#1a2542]"
                 >
                   <div className="aspect-video">
@@ -261,14 +262,14 @@ const Home = () => {
 
             {/* Insights */}
             <div className="max-w-5xl mx-auto text-left">
-              <h4 className="text-xl font-bold text-white mb-4">
+              <h4 className="text-xl font-bold mb-4">
                 Lessons, Insights & Future Vision
               </h4>
               <div className="space-y-3">
                 {insights.map((item, i) => (
                   <details
                     key={i}
-                    className="bg-[#071224]/90 border border-[#142235] rounded-lg p-4"
+                    className="bg-[#071224]/80 border border-[#142235] rounded-lg p-4"
                   >
                     <summary className="font-semibold text-white cursor-pointer">
                       {item.question}
@@ -284,24 +285,32 @@ const Home = () => {
 
       {/* PARALLAX TEAM */}
       <Parallax
-        bgImage="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg"
-        strength={200}
-        bgImageAlt="Team Background"
+        bgImage={sankofateam}
+        strength={450}
+        blur={{ min: -2, max: 5 }}
       >
         <section
           id="team"
-          className="py-24 px-4 sm:px-6 md:px-16 lg:px-24 bg-blue-50/70 text-center"
+          className="relative py-24 px-6 md:px-16 lg:px-24 text-center text-white"
         >
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-12">
-              Meet the Sankofa_Lab Team
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-800/60 to-blue-900/80 z-0"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative z-10 max-w-6xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">
+              Meet the Sankofa-Lab Team
             </h2>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {team.map((m, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ y: -6 }}
-                  className="bg-white/80 backdrop-blur-md border border-blue-100 shadow-lg rounded-2xl p-4 flex flex-col items-center"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white/80 text-gray-900 backdrop-blur-md border border-blue-100 shadow-lg rounded-2xl p-4 flex flex-col items-center"
                 >
                   <img
                     src={m.photo}
@@ -316,12 +325,12 @@ const Home = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
       </Parallax>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 md:px-16 lg:px-24 text-center bg-[#0504aa] text-white relative overflow-hidden">
+      <section className="py-20 px-6 md:px-16 lg:px-24 text-center bg-[#0504aa] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 via-blue-600 to-blue-700 opacity-90" />
         <motion.div
           className="relative z-10 max-w-4xl mx-auto"
@@ -330,23 +339,23 @@ const Home = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            Join Sankofa_Lab in Building the Next Generation of Entrepreneurs
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Join Sankofa-Lab in Building the Next Generation of Entrepreneurs
           </h2>
-          <p className="text-blue-100 mb-10 text-sm sm:text-base">
+          <p className="text-blue-100 mb-10">
             Together we can empower communities through apprenticeship,
             technology and innovation.
           </p>
           <a
             href="#contact"
-            className="bg-white text-blue-700 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition"
+            className="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition"
           >
             Get Involved
           </a>
         </motion.div>
       </section>
 
-      <Footer />
+   
     </div>
   );
 };

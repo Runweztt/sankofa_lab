@@ -1,11 +1,34 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
 import sanlogo from "../assets/sanlogo.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Scroll to #elab when route is home and hash is present
+  useEffect(() => {
+    if (location.hash === "#elab") {
+      const el = document.getElementById("elab");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  // Handler for E-Lab navigation
+  const handleElabClick = () => {
+    setMenuOpen(false);
+    if (location.pathname === "/") {
+      const el = document.getElementById("elab");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#elab");
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/40 backdrop-blur-lg border-b border-gray-200 z-50 shadow-sm">
@@ -21,23 +44,17 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-[#0504aa] transition">
-            Home
-          </Link>
-          <Link to="/about" className="hover:text-[#0504aa] transition">
-            About
-          </Link>
-          <a href="#journey" className="hover:text-[#0504aa] transition">
-            E-Lab Journey
-          </a>
-          <Link to="/contact" className="hover:text-[#0504aa] transition">
-            Contact
-          </Link>
+          <Link to="/" className="hover:text-[#0504aa] transition">Home</Link>
+          <Link to="/about" className="hover:text-[#0504aa] transition">About</Link>
+          <Link to="/contact" className="hover:text-[#0504aa] transition">Contact</Link>
+           <Link to="/elab" className="hover:text-[#0504aa] transition">E-Lab Journey</Link>
+         
         </div>
+         
 
         {/* CTA Button */}
-        <button className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa] transition-all shadow-md hover:shadow-lg">
-          Join the Movement
+        <button className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa]/90 transition-all shadow-md hover:shadow-lg">
+          Connect
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -61,20 +78,12 @@ const Navbar = () => {
             className="md:hidden bg-white/90 backdrop-blur-xl border-t border-gray-200 shadow-lg"
           >
             <div className="flex flex-col items-center gap-4 font-medium text-gray-700 py-5">
-              <Link to="/" onClick={() => setMenuOpen(false)}>
-                Home
-              </Link>
-              <Link to="/about" onClick={() => setMenuOpen(false)}>
-                About
-              </Link>
-              <a href="#journey" onClick={() => setMenuOpen(false)}>
-                E-Lab Journey
-              </a>
-              <Link to="/contact" onClick={() => setMenuOpen(false)}>
-                Contact
-              </Link>
+              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+              <button onClick={handleElabClick}>E-Lab Journey</button>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
               <button
-                className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg- transition-all"
+                className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg-[#0504aa]/90 transition-all"
                 onClick={() => setMenuOpen(false)}
               >
                 Join the Movement

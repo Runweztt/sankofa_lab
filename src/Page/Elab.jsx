@@ -1,7 +1,5 @@
-import React from "react";
+
 import { Parallax } from "react-parallax";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
 import { motion } from "framer-motion";
 
 const Elab = () => {
@@ -30,7 +28,7 @@ const Elab = () => {
 
   return (
     <div className="font-inter text-gray-800">
-      <Navbar />
+      
 
       {/* Parallax Header */}
       <Parallax
@@ -83,7 +81,7 @@ const Elab = () => {
         </div>
       </section>
 
-      <Footer />
+     
     </div>
   );
 };
