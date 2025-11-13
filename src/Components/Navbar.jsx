@@ -79,7 +79,7 @@ const Navbar = () => {
             onClick={() => scrollToTop(true)}
             className="hover:text-[#0504aa] transition"
           >
-            E-Lab Journey
+            Courses
           </Link>
 
           <Link
@@ -100,7 +100,7 @@ const Navbar = () => {
           }}
           className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa]/90 transition-all shadow-md hover:shadow-lg"
         >
-          Join the Movement
+          Connect
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -153,7 +153,7 @@ const Navbar = () => {
                   }, 120);
                 }}
               >
-                E-Lab Journey
+                Courses
               </Link>
               <Link
                 to="/contact"
@@ -173,7 +173,7 @@ const Navbar = () => {
                 }}
                 className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg-[#0504aa]/90 transition-all"
               >
-                Join the Movement
+                Connect
               </button>
             </div>
           </motion.div>
