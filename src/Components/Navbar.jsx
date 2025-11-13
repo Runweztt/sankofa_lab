@@ -9,32 +9,20 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Scroll to #elab when route is home and hash is present
+  // Automatically scroll to top when route changes
   useEffect(() => {
-    if (location.hash === "#elab") {
-      const el = document.getElementById("elab");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [location]);
-
-  // Handler for E-Lab navigation
-  const handleElabClick = () => {
-    setMenuOpen(false);
-    if (location.pathname === "/") {
-      const el = document.getElementById("elab");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate("/#elab");
-    }
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/40 backdrop-blur-lg border-b border-gray-200 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-5 sm:px-10 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center transition-transform hover:scale-105 duration-300">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex items-center transition-transform hover:scale-105 duration-300"
+        >
           <img
             src={sanlogo}
             alt="Sankofa Lab Logo"
@@ -44,17 +32,45 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-[#0504aa] transition">Home</Link>
-          <Link to="/about" className="hover:text-[#0504aa] transition">About</Link>
-          <Link to="/contact" className="hover:text-[#0504aa] transition">Contact</Link>
-           <Link to="/elab" className="hover:text-[#0504aa] transition">E-Lab Journey</Link>
-         
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#0504aa] transition"
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/about"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#0504aa] transition"
+          >
+            About
+          </Link>
+
+          <Link
+            to="/elab"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#0504aa] transition"
+          >
+            E-Lab Journey
+          </Link>
+
+          <Link
+            to="/contact"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:text-[#0504aa] transition"
+          >
+            Contact
+          </Link>
         </div>
-         
 
         {/* CTA Button */}
-        <button className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa]/90 transition-all shadow-md hover:shadow-lg">
-          Connect
+        <button
+          onClick={() => navigate("/contact")}
+          className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa]/90 transition-all shadow-md hover:shadow-lg"
+        >
+          connect
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -75,18 +91,58 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-white/90 backdrop-blur-xl border-t border-gray-200 shadow-lg"
+            className="md:hidden bg-white/1 backdrop-blur-lg  shadow-lg"
           >
             <div className="flex flex-col items-center gap-4 font-medium text-gray-700 py-5">
-              <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-              <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-              <button onClick={handleElabClick}>E-Lab Journey</button>
-              <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-              <button
-                className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg-[#0504aa]/90 transition-all"
-                onClick={() => setMenuOpen(false)}
+              <Link
+                to="/"
+                onClick={() => {
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
-                Join the Movement
+                Home
+              </Link>
+
+              <Link
+                to="/about"
+                onClick={() => {
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                About
+              </Link>
+
+              <Link
+                to="/elab"
+                onClick={() => {
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                E-Lab Journey
+              </Link>
+
+              <Link
+                to="/contact"
+                onClick={() => {
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Contact
+              </Link>
+
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  navigate("/contact");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg-[#0504aa]/90 transition-all"
+              >
+                connect
               </button>
             </div>
           </motion.div>

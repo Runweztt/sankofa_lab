@@ -2,11 +2,16 @@
 import { motion } from "framer-motion";
 import { Parallax } from "react-parallax";
 import sankofateam from "../assets/sankofa_team.jpg";
+import ajah from "../assets/ajah.jpg"
+import dan from "../assets/dan.jpg"
+import emin from "../assets/emin.jpg"
+import emm from "../assets/emm.jpg"
+import fica from "../assets/fica.jpg"
 
 const Home = () => {
   const stats = [
-    { value: "2,000+", label: "Apprentices Reached" },
-    { value: "120+", label: "Businesses Supported" },
+    { value: "2,000+", label: "  Reach Apprentices " },
+    { value: "120+", label: "  Support Businesses" },
     { value: "15+", label: "Regions Engaged" },
     { value: "100+", label: "Digital Projects Built" },
   ];
@@ -53,38 +58,36 @@ const Home = () => {
     },
   ];
 
-  const team = [
+const team = [
     {
-      name: "Emmanuel Amarikwa",
-      role: "Project Lead & Strategy Coordinator",
-      photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-   
-    },
-    {
-      name: "Magnificat Marie Augusta Umutesi",
-      role: "Research & Systems Design Lead",
-      photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
-      
-    },
-    {
-      name: "Eminente Muhimpundu",
-      role: "Digital Learning & Innovation Lead",
-      photo: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
-      
-    },
-    {
-      name: "Daniel Nakolah",
-      role: "Partnerships & Field Engagement Lead",
-      photo: "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg",
-    
-    },
-    {
-      name: "Ajang Biar",
-      role: "Technology & Operations Lead",
-      photo: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg",
-  
-    },
-  ];
+    name: "Ajang Biar",
+    role: "Technology & Operations Lead",
+    photo: ajah,
+  },
+
+   {
+    name: "Daniel Nakolah",
+    role: "Partnerships & Field Engagement Lead",
+    photo: dan,
+  },
+
+  {
+    name: "Emmanuel Amarikwa",
+    role: "Project Lead & Strategy Coordinator",
+    photo: emm,
+  },
+  {
+    name: "Magnificat Marie Augusta Umutesi",
+    role: "Research & Systems Design Lead",
+    photo: fica,
+  },
+  {
+    name: "Eminente Muhimpundu",
+    role: "Digital Learning & Innovation Lead",
+    photo: emin,
+  },
+ 
+];;
 
   const insights = [
     {
@@ -198,7 +201,7 @@ const Home = () => {
         className="py-20 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-blue-50 to-white text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-12">
-          Our E-Lab Journey
+          Our Vision
         </h2>
         <div className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {steps.map((step, i) => (
@@ -284,50 +287,59 @@ const Home = () => {
       </Parallax>
 
       {/* PARALLAX TEAM */}
-      <Parallax
-        bgImage={sankofateam}
-        strength={450}
-        blur={{ min: -2, max: 5 }}
-      >
-        <section
-          id="team"
-          className="relative py-24 px-6 md:px-16 lg:px-24 text-center text-white"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-800/60 to-blue-900/80 z-0"></div>
+        <Parallax
+  bgImage={sankofateam}
+  strength={450}
+  blur={{ min: -2, max: 5 }}
+>
+  <section
+    id="team"
+    className="relative py-24 px-6 md:px-16 lg:px-24 text-center text-white"
+  >
+    {/* Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-800/60 to-blue-900/80 z-0"></div>
+
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="relative z-10 max-w-6xl mx-auto"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-12">
+        Meet the Sankofa-Lab Team
+      </h2>
+
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        {team.map((m, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative z-10 max-w-6xl mx-auto"
+            key={i}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+            className="relative rounded-2xl overflow-hidden shadow-xl group"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">
-              Meet the Sankofa-Lab Team
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-              {team.map((m, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-white/80 text-gray-900 backdrop-blur-md border border-blue-100 shadow-lg rounded-2xl p-4 flex flex-col items-center"
-                >
-                  <img
-                    src={m.photo}
-                    alt={m.name}
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-4 shadow-md"
-                  />
-                  <h3 className="text-base sm:text-lg font-semibold text-blue-700">
-                    {m.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{m.role}</p>
-                  <p className="text-xs text-gray-500 mt-2">{m.bio}</p>
-                </motion.div>
-              ))}
+            {/* Background Image */}
+            <img
+              src={m.photo}
+              alt={m.name}
+              className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/60 to-transparent opacity-90"></div>
+
+            {/* Text Overlay */}
+            <div className="absolute bottom-0 left-0 w-full p-4 text-left text-white">
+              <h3 className="text-lg font-semibold">{m.name}</h3>
+              <p className="text-sm text-blue-200">{m.role}</p>
             </div>
           </motion.div>
-        </section>
-      </Parallax>
+        ))}
+      </div>
+    </motion.div>
+  </section>
+</Parallax>
+
 
       {/* CTA */}
       <section className="py-20 px-6 md:px-16 lg:px-24 text-center bg-[#0504aa] text-white relative overflow-hidden">

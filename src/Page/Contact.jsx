@@ -8,14 +8,14 @@ const Contact = () => {
       
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white text-center py-24 px-6 md:px-16">
+      <section className="bg-gradient-to-b mt-20 from-blue-900 via-blue-800 to-blue-700 text-white text-center py-24 px-6 md:px-16">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="text-4xl md:text-6xl font-extrabold mb-4"
         >
-          Contact <span className="text-blue-300">Sankofa_Lab</span>
+          Contact <span className="text-blue-300">Sankofa-Lab</span>
         </motion.h1>
         <p className="max-w-2xl mx-auto text-blue-100 text-lg">
           We’d love to hear from you! Whether you’re a potential partner,
@@ -72,11 +72,11 @@ const Contact = () => {
           </div>
           <div>
             <h3 className="font-bold text-blue-300">Location</h3>
-            <p>Lagos, Nigeria — African Leadership University Network</p>
+            <p> African Leadership University Network</p>
           </div>
           <div>
             <h3 className="font-bold text-blue-300">Socials</h3>
-            <p>@sankofa_lab on Instagram & LinkedIn</p>
+            <p>@sankofa-lab on Instagram & LinkedIn</p>
           </div>
         </div>
       </section>

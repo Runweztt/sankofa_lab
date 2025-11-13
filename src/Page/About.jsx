@@ -1,40 +1,47 @@
 
 import { motion } from "framer-motion";
 import { Parallax } from "react-parallax";
-import sankofateam from "../assets/sankofa_team.jpg"; // use const if in public
+import sankofateam from "../assets/sankofa_team.jpg"; 
+import ajah from "../assets/ajah.jpg"
+import dan from "../assets/dan.jpg"
+import emin from "../assets/emin.jpg"
+import emm from "../assets/emm.jpg"
+import fica from "../assets/fica.jpg"
 
 const About = () => {
   const team = [
+ 
+    {
+      name: "Ajang Biar",
+      role: "Technology & Operations Lead",
+      img: ajah,
+      desc: "Builds and manages the technical backbone of our projects, ensuring scalability, usability, and measurable outcomes.",
+    },
+       {
+      name: "Daniel Nakolah",
+      role: "Partnerships & Field Engagement Lead",
+      img: dan,
+      desc: "Connects Sankofa_Lab with communities and business mentors to bridge traditional apprenticeship and modern digital markets.",
+    },
     {
       name: "Emmanuel Amarikwa",
       role: "Project Lead & Strategy Coordinator",
-      img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
+      img: emm,
       desc: "Integrates research, mentorship feedback, and community data to align our initiatives with job creation outcomes in Nigeria.",
     },
     {
       name: "Magnificat Marie Augusta Umutesi",
       role: "Research & Systems Design Lead",
-      img: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg",
+      img: fica,
       desc: "Leads the documentation of our think tank’s learning process, using ALU’s entrepreneurial approach to strengthen the apprenticeship model.",
     },
     {
       name: "Eminente Muhimpundu",
       role: "Digital Learning & Innovation Lead",
-      img: "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg",
+      img: emin,
       desc: "Transforms ideas into actionable digital learning experiences — from training tools to apprenticeship tracking platforms.",
     },
-    {
-      name: "Daniel Nakolah",
-      role: "Partnerships & Field Engagement Lead",
-      img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
-      desc: "Connects Sankofa_Lab with communities and business mentors to bridge traditional apprenticeship and modern digital markets.",
-    },
-    {
-      name: "Ajang Biar",
-      role: "Technology & Operations Lead",
-      img: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg",
-      desc: "Builds and manages the technical backbone of our projects, ensuring scalability, usability, and measurable outcomes.",
-    },
+
   ];
 
   return (
@@ -53,10 +60,10 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-extrabold mb-6"
           >
-            About <span className="text-blue-300">Sankofa_Lab</span>
+            About <span className="text-blue-300">Sankofa-Lab</span>
           </motion.h1>
           <p className="max-w-3xl mx-auto text-blue-100 text-lg">
-            We’re reimagining how Africa creates jobs — by blending mentorship,
+            We’re reimagining how Africa creates jobs by blending mentorship,
             cultural heritage, and technology to empower young entrepreneurs.
           </p>
         </section>
@@ -73,9 +80,9 @@ const About = () => {
             Our Mission
           </motion.h2>
           <p className="text-gray-600 text-lg leading-relaxed">
-            Sankofa_Lab’s mission is to reduce youth unemployment and drive
+            Sankofa-Lab’s mission is to reduce youth unemployment and drive
             inclusive growth in Nigeria by reimagining the{" "}
-            <strong>Igbo Apprenticeship System</strong> — combining traditional
+            <strong>Igbo Apprenticeship System</strong>  combining traditional
             mentorship with digital entrepreneurship. We believe the path to
             sustainable development lies in empowering local innovators to build
             global solutions rooted in culture and technology.

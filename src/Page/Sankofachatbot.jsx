@@ -63,7 +63,7 @@ const Sankofachatbot = () => {
       {/* Toggle Button - always accepts pointer events */}
       <button
         onClick={() => setShowBot((prev) => !prev)}
-        className="pointer-events-auto bg-[#3b82f6] text-white p-4 rounded-full shadow-2xl hover:bg-[#2563eb] active:scale-95 transition-all duration-200 flex items-center justify-center"
+        className="pointer-events-auto bg-[#0504aa] text-white p-4 rounded-full shadow-2xl hover:bg-[#0504aa] active:scale-95 transition-all duration-200 flex items-center justify-center"
         aria-label={showBot ? "Close chat" : "Open chat"}
         
       >
