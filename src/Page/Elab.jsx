@@ -106,7 +106,7 @@ const Elab = () => {
               key={i}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className={`rounded-2xl shadow-xl p-6 bg-gradient-to-br ${c.color} text-white flex flex-col justify-between min-h-[300px]`}
+              className={`rounded-2xl shadow-xl p-6 bg-[#0504aa] ${c.color} text-white flex flex-col justify-between min-h-[300px]`}
             >
               <div>
                 <h3 className="text-xl font-semibold mb-2">{c.title}</h3>
