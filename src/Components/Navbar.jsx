@@ -121,7 +121,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-white/90 backdrop-blur-xl border-t border-gray-200 shadow-lg"
+            className="md:hidden bg-white/1 backdrop-blur-xl border-t border-gray-200 shadow-lg"
           >
             <div className="flex flex-col items-center gap-4 font-medium text-gray-700 py-5">
               <Link
