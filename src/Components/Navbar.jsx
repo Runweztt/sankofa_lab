@@ -9,9 +9,35 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Automatically scroll to top when route changes
+  // Robust scroll-to-top helper (smooth when possible, with fallbacks)
+  const scrollToTop = (smooth = true) => {
+    // Try smooth scroll first via requestAnimationFrame
+    const doScroll = () => {
+      try {
+        if (smooth && "scrollBehavior" in document.documentElement.style) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          window.scrollTo(0, 0);
+        }
+        // extra fallback - directly set the scroll positions (some browsers)
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      } catch (err) {
+        // last-resort fallback
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
+    };
+
+    // Use rAF to ensure run after any render, plus a short timeout fallback
+    window.requestAnimationFrame(() => doScroll());
+    setTimeout(() => doScroll(), 120);
+  };
+
+  // Automatically scroll to top when route changes (use pathname only)
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop(true);
   }, [location.pathname]);
 
   return (
@@ -20,7 +46,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           to="/"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => scrollToTop(true)}
           className="flex items-center transition-transform hover:scale-105 duration-300"
         >
           <img
@@ -34,7 +60,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
           <Link
             to="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => scrollToTop(true)}
             className="hover:text-[#0504aa] transition"
           >
             Home
@@ -42,7 +68,7 @@ const Navbar = () => {
 
           <Link
             to="/about"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => scrollToTop(true)}
             className="hover:text-[#0504aa] transition"
           >
             About
@@ -50,7 +76,7 @@ const Navbar = () => {
 
           <Link
             to="/elab"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => scrollToTop(true)}
             className="hover:text-[#0504aa] transition"
           >
             E-Lab Journey
@@ -58,7 +84,7 @@ const Navbar = () => {
 
           <Link
             to="/contact"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => scrollToTop(true)}
             className="hover:text-[#0504aa] transition"
           >
             Contact
@@ -67,10 +93,14 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <button
-          onClick={() => navigate("/contact")}
+          onClick={() => {
+            navigate("/contact");
+            // navigate may be synchronous in SPA; ensure scrolling after nav
+            setTimeout(() => scrollToTop(true), 120);
+          }}
           className="hidden md:block bg-[#0504aa] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0504aa]/90 transition-all shadow-md hover:shadow-lg"
         >
-          connect
+          Join the Movement
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -91,44 +121,45 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-white/1 backdrop-blur-lg  shadow-lg"
+            className="md:hidden bg-white/90 backdrop-blur-xl border-t border-gray-200 shadow-lg"
           >
             <div className="flex flex-col items-center gap-4 font-medium text-gray-700 py-5">
               <Link
                 to="/"
                 onClick={() => {
                   setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  // small delay so menu close animation doesn't block scroll
+                  setTimeout(() => scrollToTop(true), 80);
                 }}
               >
                 Home
               </Link>
-
               <Link
                 to="/about"
                 onClick={() => {
                   setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => scrollToTop(true), 80);
                 }}
               >
                 About
               </Link>
-
               <Link
                 to="/elab"
                 onClick={() => {
                   setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => {
+                    // navigate handled by Link; ensure top after route change
+                    scrollToTop(true);
+                  }, 120);
                 }}
               >
                 E-Lab Journey
               </Link>
-
               <Link
                 to="/contact"
                 onClick={() => {
                   setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => scrollToTop(true), 80);
                 }}
               >
                 Contact
@@ -138,11 +169,11 @@ const Navbar = () => {
                 onClick={() => {
                   setMenuOpen(false);
                   navigate("/contact");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => scrollToTop(true), 120);
                 }}
                 className="bg-[#0504aa] text-white px-6 py-2 rounded-full hover:bg-[#0504aa]/90 transition-all"
               >
-                connect
+                Join the Movement
               </button>
             </div>
           </motion.div>
