@@ -8,6 +8,7 @@ import Sankofachatbot from "./Page/Sankofachatbot";
 import Footer from "./Components/Footer";
 import Contact from "./Page/Contact";
 
+
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/elab" element={<Elab />} />
+       
         </Routes>
       </div>
 
